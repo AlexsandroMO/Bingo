@@ -8,7 +8,7 @@
         <div class="col-xl-8">
           <h1>Número Sorteado</h1>
           <h2>
-            {% if num == '-'%}
+            {% if num == '-' %}
               <p>Ops, Número Sorteado Já saiu. Vamos de novo!</p>
             {% else %}
               <p id="p-ajust">[ {{ num }} ]</p>
@@ -23,7 +23,7 @@
           </h2>
           <h2>
             <p id="p-ajust2">
-              {% if num == '-' %}
+              {% if falta == 'Acabou!' %}
                 <p id="p-ajust2">Acabou!</p>
               {% else %}
                 <p>Faltam: {{ falta }} números a serem sorteados</p>

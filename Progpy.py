@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import openpyxl
 import xlrd
 
@@ -36,43 +37,30 @@ def singed():
   return df
 
 
-
-
-
-
-
-'''
-def clear_df():
-
-  obj = {'CANTADOS': [0]}
-  df = pd.DataFrame(data=obj)
-  #df = pd.DataFrame(columns=[obj])
-  df.to_excel('static/excel/CANTADOS.xlsx')
-
-
-def list_bingo(num):
-
-  df = pd.read_excel('static/excel/CANTADOS.xlsx')
-  print('>>>>>>>>--------:', num, 'len sem: ', len(df['CANTADOS']))
-
-  df.loc[len(df['CANTADOS'])]=[num]
-  df.to_excel('static/excel/CANTADOS.xlsx')
-
-  #obj = {'CANTADOS': [num]}
-  #df2 = pd.DataFrame(data=obj, index=[len(df)])
-
-  #new = df.append(pd.concat([df2]))
-  #new = new.drop_duplicates()
-  #new= new.drop('Unnamed: 0', axis=1)
-  #print('----: ', new)
-  #new.to_excel('static/excel/CANTADOS.xlsx')
-
-  return df['CANTADOS']
-
-
-def singed():
-  df = pd.read_excel('static/excel/CANTADOS.xlsx')
+def clear_List():
+  lista = np.arange(1, 100)
+  col = [['LIS']]
+  df = pd.DataFrame(data=lista, columns=col)
+  df.to_csv('static/excel/Lista.csv',index=False)
 
   return df
 
-  '''
+clear_List()
+
+
+def actualy_list(canto):
+
+  lista = []
+  Lista = pd.read_csv('static/excel/Lista.csv')
+
+  for i in Lista['LIS']:
+    lista.append(i)
+
+  listaDois = list(filter(lambda i: i != canto, lista))
+
+  col = ['LIS']
+  df = pd.DataFrame(data=listaDois, columns=col)
+  df.to_csv('static/excel/Lista.csv',index=False)
+
+  return df
+
